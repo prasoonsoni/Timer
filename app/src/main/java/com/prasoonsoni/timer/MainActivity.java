@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     SeekBar seekBar;
     TextView timerClock;
     Boolean counterIsActive = true;
-    Button controllerButton = findViewById(R.id.controllerButton);
+    Button controllerButton;
     CountDownTimer countDownTimer;
     public void resetTimer(){
         timerClock.setText("0:30");
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         timerClock.setText(Integer.toString(minutes) + ":" + secondString);
     }
     public void controlTimer(View view){
-            if (counterIsActive==false){
+        if (counterIsActive==false){
             counterIsActive = true;
             seekBar.setEnabled(false);
             controllerButton.setText("Stop");
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }.start();
         } else{
-                resetTimer();
-            }
+            resetTimer();
+        }
 
     }
 
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         seekBar = findViewById(R.id.seekBar);
         controllerButton = findViewById(R.id.controllerButton);
         seekBar.setMax(600);
+        seekBar.setProgress(30);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
